@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.27451, 0.247059, 0.247059, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.756863, 0.717647, 0.0941176, 1 )
+metallic = 0.43
+roughness = 0.48
+
+[sub_resource type="ProceduralSky" id=4]
+sky_top_color = Color( 0.0235294, 0.239216, 0.360784, 1 )
+sky_horizon_color = Color( 0.0431373, 0.0431373, 0.0431373, 1 )
+ground_bottom_color = Color( 0, 0, 0, 1 )
+ground_horizon_color = Color( 0.145098, 0.0901961, 0.0431373, 1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 4 )
+background_color = Color( 0.0745098, 0.0470588, 0.211765, 1 )
+ambient_light_energy = 0.0
+ambient_light_sky_contribution = 0.0
+fog_enabled = true
+fog_color = Color( 0.305882, 0.305882, 0.305882, 1 )
+fog_depth_begin = 0.0
+
+[sub_resource type="CapsuleShape" id=5]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00998974, 4.22436, -0.0641565 )
+use_collision = true
+invert_faces = true
+width = 16.5746
+height = 4.37753
+depth = 18.5247
+material = SubResource( 1 )
+
+[node name="CSGBox2" type="CSGBox" parent="."]
+transform = Transform( 0.751292, 0.366794, -0.548655, -0.296215, 0.930302, 0.21632, 0.58976, 0, 0.807578, 0, 3.73519, 0 )
+use_collision = true
+width = 1.43637
+height = 1.4379
+material = SubResource( 2 )
+
+[node name="CSGBox4" type="CSGBox" parent="."]
+transform = Transform( 0.807574, -0.00315905, -0.589757, 0.00255117, 0.999995, -0.00186308, 0.58976, 0, 0.807578, -3.45255, 2.60467, -6.17168 )
+use_collision = true
+width = 1.43637
+height = 1.4379
+material = SubResource( 2 )
+
+[node name="CSGBox3" type="CSGBox" parent="."]
+transform = Transform( 0.868267, 0.436635, -0.235505, 0.197168, 0.131893, 0.971457, 0.455234, -0.889918, 0.0284284, 3.94778, 3.50238, 3.2024 )
+use_collision = true
+width = 1.43637
+height = 1.4379
+material = SubResource( 2 )
+
+[node name="OmniLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.180365, 0.9836, 0, -0.9836, 0.180365, 0.99992, 5.38888, 3.77812 )
+light_color = Color( 0.882353, 0.894118, 0.47451, 1 )
+light_energy = 3.936
+spot_angle = 48.103
+
+[node name="OmniLight2" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.180365, 0.9836, 0, -0.9836, 0.180365, -3.18758, 5.35021, -5.57485 )
+light_color = Color( 0.882353, 0.894118, 0.47451, 1 )
+light_energy = 3.936
+spot_angle = 48.103
+
+[node name="OmniLight3" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.180365, 0.9836, 0, -0.9836, 0.180365, -5.61078, 5.35021, 5.76805 )
+light_color = Color( 0.882353, 0.894118, 0.47451, 1 )
+light_energy = 3.936
+spot_range = 12.6641
+spot_angle = 19.329
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="Player" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75003, 3.56238, 6.74687 )
+script = ExtResource( 1 )
+
+[node name="Camera" type="Camera" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.896959, 0 )
+
+[node name="KinematicBody" type="KinematicBody" parent="Player"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Player/KinematicBody"]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -1, 0, 0.5, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 5 )
