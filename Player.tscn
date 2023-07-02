@@ -1,8 +1,40 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape" id=5]
+
+[sub_resource type="Animation" id=6]
+resource_name = "Head_bob"
+length = 0.4
+step = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.395 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.896959, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 0.896959, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.896959, 0 ) ]
+}
 
 [node name="KinematicBody" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -14,3 +46,29 @@ shape = SubResource( 5 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.896959, 0 )
+fov = 90.0
+far = 4000.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera"]
+anims/Head_bob = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
+[node name="SpotLight" type="SpotLight" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 0.972468, -0.233038, 0, 0.233038, 0.972468, 0, -0.896959, 0 )
+light_color = Color( 0.690196, 0.678431, 0.333333, 1 )
+light_energy = 1.711
+light_indirect_energy = 16.0
+spot_range = 1034.42
+spot_attenuation = 33.1285
+spot_angle = 15.23
+spot_angle_attenuation = 1.62451
+
+[node name="SpotLight2" type="SpotLight" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 0.972468, -0.233038, 0, 0.233038, 0.972468, 0, -0.896959, 0 )
+light_color = Color( 0.690196, 0.678431, 0.333333, 1 )
+light_energy = 1.711
+light_indirect_energy = 16.0
+spot_range = 1034.42
+spot_attenuation = 33.1285
+spot_angle = 15.23
+spot_angle_attenuation = 1.62451
