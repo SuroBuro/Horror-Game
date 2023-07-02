@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PianoScene.tscn" type="PackedScene" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.27451, 0.247059, 0.247059, 1 )
@@ -11,10 +12,10 @@ metallic = 0.43
 roughness = 0.48
 
 [sub_resource type="ProceduralSky" id=4]
-sky_top_color = Color( 0.0235294, 0.239216, 0.360784, 1 )
-sky_horizon_color = Color( 0.0431373, 0.0431373, 0.0431373, 1 )
-ground_bottom_color = Color( 0, 0, 0, 1 )
-ground_horizon_color = Color( 0.145098, 0.0901961, 0.0431373, 1 )
+sky_top_color = Color( 0.0509804, 0.0509804, 0.0509804, 1 )
+sky_horizon_color = Color( 0.0117647, 0.0117647, 0.0117647, 1 )
+ground_bottom_color = Color( 0.00392157, 0.0196078, 0.0392157, 1 )
+ground_horizon_color = Color( 0.243137, 0.243137, 0.243137, 1 )
 
 [sub_resource type="Environment" id=3]
 background_mode = 2
@@ -29,12 +30,12 @@ fog_depth_begin = 0.0
 [node name="Spatial" type="Spatial"]
 
 [node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00998974, 4.22436, -0.0641565 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00998974, 6.00699, -0.0641565 )
 use_collision = true
 invert_faces = true
-width = 16.5746
-height = 4.37753
-depth = 18.5247
+width = 302.577
+height = 8.07615
+depth = 130.571
 material = SubResource( 1 )
 
 [node name="CSGBox2" type="CSGBox" parent="."]
@@ -82,3 +83,12 @@ environment = SubResource( 3 )
 
 [node name="KinematicBody" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.479, 3.64818, 0 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.0712886, 0.997456, 0, -0.997456, 0.0712886, -0.174035, 9.73074, -41.8358 )
+light_color = Color( 0.878431, 0.827451, 0.294118, 1 )
+spot_range = 9.0986
+spot_angle = 22.1601
+
+[node name="babygrand" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 2.17087, 2.98428, -41.164 )
