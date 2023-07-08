@@ -9,7 +9,7 @@ It started becoming a pain in the ass to even bother setting up tokens for a pro
 
 Well, I noticed that having the readme file of a plugin wouldn't be a good look for the project, so I decided to change it. 
 Also, I once tried to edit the readme, but I didn't know how markdown text worked (well, I didn't even know it was called as **Markdown**, am I _right?_).
-However, since I started using [[Obsidian.md]] , I feel right at home typing in _Markdown_
+However, since I started using [Obsidian.md] , I feel right at home typing in _Markdown_
 
 Let's have some fun,
 Markdown allows you to edit text in a pretty much normal fashion, but you have to use symbols in order to make any changes to type of script.
